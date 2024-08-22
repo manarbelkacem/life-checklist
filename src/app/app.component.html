@@ -1,0 +1,30 @@
+<div class="container py-4">
+  <div class="card sticky-top">
+    <div class="card-body text-center">
+      <h1 class="text-white bg-success py-4">Life Checklist</h1>
+      <h5>You've completed {{getNumberOfCheckedItems()}}/{{checklistItems.length}} items</h5>
+      <div class="progress" role="progressbar">
+        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" [style.width.%]="100 * getNumberOfCheckedItems()/checklistItems.length"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mt-3">
+    @for (checkListItem of checklistItems;track checkListItem){
+      <div class="col">
+        <input type="checkbox"  [(ngModel)]="checkListItem.checked" class="btn-check" id="{{$index}}" autocomplete="off">
+        <label class="btn btn-outline-success w-100 p-4 text-start" for="{{$index}}">{{ checkListItem.label }}</label><br>
+
+      </div>
+    }
+  </div>
+</div>
+
+
+<p class="text-secondary w-100 text-center">
+  <small>
+    Built with Angular 17 & Bootstrap 5 by
+    <a href="https://www.linkedin.com/in/manarbelkacem" target="_blank">
+      Manar Belkacem
+    </a>
+  </small>
+</p>
